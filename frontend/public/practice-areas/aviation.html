@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviation Law - KBJ & CO</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: #1d1d1f; }
+        .practice-hero {
+            position: relative; min-height: 75vh; display: flex; align-items: center; justify-content: center; text-align: center;
+            background: linear-gradient(135deg, rgba(0, 40, 85, 0.92) 0%, rgba(0, 80, 160, 0.88) 100%), 
+                        url("/images/practice/aviation-bg.jpg") center/cover; color: white; padding: 60px 20px;
+        }
+        .hero-content { max-width: 1000px; animation: fadeInUp 1s ease; }
+        .practice-hero h1 { font-size: 5rem; font-weight: 800; margin-bottom: 30px; letter-spacing: -3px; }
+        .practice-hero .tagline { font-size: 1.8rem; margin-bottom: 20px; opacity: 0.95; font-weight: 300; }
+        .practice-hero .subtitle { font-size: 1.2rem; opacity: 0.85; max-width: 800px; margin: 0 auto; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        .container { max-width: 1400px; margin: 0 auto; padding: 100px 40px; }
+        .content-section { background: white; border-radius: 30px; padding: 80px; margin-bottom: 50px; 
+                          box-shadow: 0 20px 60px rgba(0,0,0,0.08); border-left: 5px solid #0071e3; }
+        .content-section h2 { font-size: 3rem; margin-bottom: 30px; color: #1d1d1f; font-weight: 700; }
+        .content-section p { font-size: 1.2rem; line-height: 2; color: #424245; margin-bottom: 25px; }
+        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-top: 60px; }
+        .expertise-card { padding: 45px; background: linear-gradient(145deg, #f8f9fa, #ffffff); border-radius: 25px;
+                         border: 1px solid #e5e5e7; transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .expertise-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+                                 background: linear-gradient(90deg, #0071e3, #00a8e8); transform: scaleX(0); transition: transform 0.4s; }
+        .expertise-card:hover::before { transform: scaleX(1); }
+        .expertise-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0, 113, 227, 0.15); }
+        .expertise-card h3 { font-size: 1.8rem; margin-bottom: 20px; color: #0071e3; font-weight: 600; }
+        .expertise-card p { font-size: 1.05rem; color: #6e6e73; line-height: 1.8; }
+        .highlight-section { background: linear-gradient(135deg, #1d1d1f, #2d2d2f); color: white; border-radius: 30px;
+                           padding: 80px; margin: 60px 0; position: relative; overflow: hidden; }
+        .highlight-section::after { content: ""; position: absolute; top: -50%; right: -50%; width: 100%; height: 200%;
+                                   background: radial-gradient(circle, rgba(0, 113, 227, 0.1), transparent 70%); }
+        .highlight-section h2 { color: white; position: relative; z-index: 1; font-size: 3rem; margin-bottom: 40px; }
+        .highlight-section ul { list-style: none; position: relative; z-index: 1; }
+        .highlight-section li { font-size: 1.2rem; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-left: 40px; position: relative; }
+        .highlight-section li::before { content: ""; position: absolute; left: 0; color: #0071e3; font-size: 1.5rem; }
+        .cta-section { text-align: center; padding: 120px 40px; background: linear-gradient(135deg, #0071e3, #005bb5);
+                      color: white; border-radius: 30px; margin: 60px 40px; }
+        .cta-section h2 { font-size: 3.5rem; margin-bottom: 30px; font-weight: 700; }
+        .cta-section p { font-size: 1.3rem; margin-bottom: 50px; opacity: 0.9; }
+        .cta-button { display: inline-block; padding: 22px 60px; background: white; color: #0071e3; text-decoration: none;
+                     border-radius: 50px; font-size: 1.3rem; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .back-button { display: inline-block; margin: 60px 20px; padding: 16px 40px; background: #1d1d1f; color: white;
+                      text-decoration: none; border-radius: 30px; transition: all 0.3s ease; font-weight: 500; }
+        .back-button:hover { background: #0071e3; transform: translateX(-5px); }
+    </style>
+</head>
+<body>
+    <div class="practice-hero">
+        <div class="hero-content">
+            <h1>Aviation Law</h1>
+            <p class="tagline">Soaring Through Complex Aerospace Legal Landscapes</p>
+            <p class="subtitle">Comprehensive legal expertise for airlines, aircraft operators, manufacturers, and aviation stakeholders navigating the complexities of domestic and international aviation regulations</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-section">
+            <h2>Navigating the Skies of Aviation Law</h2>
+            <p>In the dynamic world of aviation, legal complexities span international regulations, safety compliance, commercial transactions, and dispute resolution. KBJ & CO s Aviation practice delivers sophisticated legal counsel to airlines, aircraft manufacturers, lessors, airports, and aviation service providers across India and internationally.</p>
+            <p>Our team combines deep technical understanding of aviation operations with cutting-edge legal expertise, ensuring your business stays compliant, competitive, and protected in this highly regulated industry. From fleet acquisitions to regulatory filings, accident investigations to route licensingwe ve got you covered.</p>
+        </div>
+
+        <div class="highlight-section">
+            <h2>Our Aviation Law Expertise</h2>
+            <ul>
+                <li>Aircraft acquisition, financing, and leasing transactions</li>
+                <li>Regulatory compliance and DGCA advisory services</li>
+                <li>Aviation accident investigation and liability matters</li>
+                <li>Commercial airline operations and route licensing</li>
+                <li>Airport development and infrastructure projects</li>
+                <li>International aviation agreements and treaties</li>
+                <li>Employment law for aviation personnel</li>
+                <li>Insurance claims and risk management</li>
+                <li>Drone operations and UAV regulations</li>
+                <li>MRO (Maintenance, Repair, Overhaul) agreements</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Specialized Legal Services</h2>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3>Aircraft Transactions & Finance</h3>
+                    <p>Expert guidance on aircraft purchase, sale, leasing, and financing arrangements. We structure deals that optimize tax efficiency, manage risks, and ensure regulatory compliance across jurisdictions.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>Regulatory Compliance & Licensing</h3>
+                    <p>Navigating DGCA regulations, obtaining Air Operator Certificates (AOC), route licenses, and ensuring compliance with evolving aviation safety and security standards.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>Aviation Litigation & Disputes</h3>
+                    <p>Representing clients in complex aviation disputes including accident liability, commercial disagreements, passenger rights claims, and regulatory enforcement matters.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>Airport Operations & Development</h3>
+                    <p>Legal support for airport construction, privatization, concession agreements, ground handling contracts, and commercial exploitation of airport facilities.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>Drone & UAV Regulations</h3>
+                    <p>Pioneering legal advice on unmanned aerial systems, including DGCA compliance, commercial drone operations, privacy considerations, and liability frameworks.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>International Aviation Law</h3>
+                    <p>Expertise in Montreal, Warsaw, and Cape Town Conventions, bilateral air service agreements, and cross-border aviation transactions.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Why Aviation Clients Choose KBJ & CO</h2>
+            <p>Aviation law demands precision, technical knowledge, and swift action. Our team has successfully represented major airlines in fleet acquisitions worth hundreds of crores, defended operators in critical accident investigations, and secured route licenses that opened new markets for our clients.</p>
+            <p>We understand that aviation operates 24/7, and so does our commitment to your success. Whether you re launching a new airline, expanding operations internationally, or facing regulatory scrutiny, we provide the strategic legal counsel that keeps you airborne and competitive.</p>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2>Ready to Take Off?</h2>
+        <p>Let our aviation law experts guide your journey through complex regulatory skies</p>
+        <a href="/#contact" class="cta-button">Schedule a Consultation</a>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="/" class="back-button"> Back to Home</a>
+    </div>
+</body>
+</html>
