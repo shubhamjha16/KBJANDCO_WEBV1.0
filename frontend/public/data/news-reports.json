@@ -1,0 +1,20 @@
+{
+  "reports": [
+    {
+      "id": 1,
+      "title": "Delhi School Tribunal Awards ₹25 Lakh Compensation",
+      "image": "report-1.jpg",
+      "source": "News Source",
+      "date": "2024-01-15",
+      "description": "Tribunal declares termination illegal, orders compensation"
+    },
+    {
+      "id": 2,
+      "title": "CAT Quashes Denial of Promotion",
+      "image": "report-2.jpg",
+      "source": "Legal Times",
+      "date": "2024-02-20",
+      "description": "Orders review for home science teachers"
+    }
+  ]
+}

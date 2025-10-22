@@ -1,0 +1,6 @@
+PLACE YOUR PUBLIC INFO PDF FILES IN THIS FOLDER
+
+This folder will contain all the PDF documents for public information.
+
+After placing PDFs here, update the file:
+public/data/public-info.json

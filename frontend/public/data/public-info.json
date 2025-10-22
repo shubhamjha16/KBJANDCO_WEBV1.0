@@ -1,0 +1,18 @@
+{
+  "documents": [
+    {
+      "id": 1,
+      "title": "2020 Delhi DB - Challenge to CRPF Standing Order",
+      "fileName": "crpf-standing-order.pdf",
+      "date": "2020-12-15",
+      "description": "Challenge to CRPF Standing Order dated 15.12.2008, the same being discriminatory and unconstitutional"
+    },
+    {
+      "id": 2,
+      "title": "2020 Del Single - Yoga Teacher Service Regularization",
+      "fileName": "yoga-teacher-regularization.pdf",
+      "date": "2020-08-10",
+      "description": "Regularization/Confirmation of service of a yoga teacher working in Modern School, Delhi"
+    }
+  ]
+}

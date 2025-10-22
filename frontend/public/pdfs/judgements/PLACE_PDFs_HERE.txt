@@ -1,0 +1,8 @@
+PLACE YOUR PDF FILES IN THIS FOLDER
+
+This folder will contain all the PDF documents for judgements.
+
+After placing PDFs here, update the file:
+public/data/judgements.json
+
+For detailed instructions, see: HOW_TO_ADD_PDFS.md in the project root folder.

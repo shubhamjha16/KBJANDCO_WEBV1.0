@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noted Judgements - KBJ & Co</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffffff, #f8f8f8);
+        }
+
+        .judgements-page {
+            min-height: 100vh;
+            padding: 100px 20px 60px;
+        }
+
+        .judgements-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #1d1d1f;
+            text-decoration: none;
+            font-size: 17px;
+            margin-bottom: 40px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .back-link:hover {
+            opacity: 0.6;
+            transform: translateX(-4px);
+        }
+
+        .page-title {
+            font-size: 64px;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+        }
+
+        .page-subtitle {
+            font-size: 24px;
+            color: #86868b;
+            font-weight: 300;
+        }
+
+        #court-list-view {
+            display: block;
+        }
+
+        #court-detail-view {
+            display: none;
+        }
+
+        .courts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+
+        .court-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 32px 48px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .court-item:last-child {
+            border-bottom: none;
+        }
+
+        .court-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 0;
+            background: linear-gradient(90deg, rgba(29,29,31,0.03), transparent);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .court-item:hover {
+            background: #fafafa;
+            padding-left: 56px;
+        }
+
+        .court-item:hover::before {
+            width: 100%;
+        }
+
+        .court-name {
+            font-size: 21px;
+            color: #1d1d1f;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            flex: 1;
+        }
+
+        .pdf-count {
+            font-size: 15px;
+            color: #86868b;
+            margin-right: 20px;
+            font-weight: 400;
+        }
+
+        .arrow {
+            font-size: 20px;
+            color: #86868b;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+        }
+
+        .court-item:hover .arrow {
+            opacity: 1;
+            transform: translateX(4px);
+        }
+
+        .pdfs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pdf-card {
+            background: #fff;
+            padding: 40px 48px;
+            border-radius: 24px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .pdf-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+
+        .pdf-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            gap: 24px;
+        }
+
+        .pdf-title {
+            font-size: 24px;
+            color: #1d1d1f;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            margin: 0;
+            flex: 1;
+        }
+
+        .pdf-date {
+            font-size: 15px;
+            color: #86868b;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .pdf-description {
+            font-size: 17px;
+            color: #6e6e73;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .pdf-link {
+            display: inline-block;
+            color: #1d1d1f;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            padding-bottom: 2px;
+            border-bottom: 1px solid #1d1d1f;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pdf-link:hover {
+            opacity: 0.6;
+            transform: translateX(4px);
+        }
+
+        .back-button {
+            background: transparent;
+            border: none;
+            color: #1d1d1f;
+            font-size: 17px;
+            cursor: pointer;
+            padding: 12px 0;
+            margin-bottom: 40px;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .back-button:hover {
+            opacity: 0.6;
+            transform: translateX(-4px);
+        }
+    </style>
+</head>
+<body>
+    <div class="judgements-page">
+        <div class="judgements-container">
+            <a href="/index.html" class="back-link">← Back to Home</a>
+            
+            <div class="page-header">
+                <h1 class="page-title">Noted Judgements</h1>
+                <p class="page-subtitle">Select a court to view judgements</p>
+            </div>
+
+            <div id="court-list-view">
+                <div class="courts-list" id="courts-container">
+                    <!-- Courts will be loaded here -->
+                </div>
+            </div>
+
+            <div id="court-detail-view">
+                <button class="back-button" onclick="showCourtList()">← Back to Courts</button>
+                <div class="page-header">
+                    <h2 class="page-title" id="court-title"></h2>
+                    <p class="page-subtitle" id="court-subtitle"></p>
+                </div>
+                <div class="pdfs-list" id="pdfs-container">
+                    <!-- PDFs will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let judgementsData = null;
+
+        // Load judgements data
+        fetch('/data/judgements.json')
+            .then(response => response.json())
+            .then(data => {
+                judgementsData = data;
+                displayCourts();
+            })
+            .catch(error => {
+                console.error('Error loading judgements:', error);
+                document.getElementById('courts-container').innerHTML = 
+                    '<p style="text-align: center; padding: 40px; color: #86868b;">Error loading data. Please try again later.</p>';
+            });
+
+        function displayCourts() {
+            const container = document.getElementById('courts-container');
+            container.innerHTML = '';
+
+            judgementsData.courts.forEach(court => {
+                const courtItem = document.createElement('div');
+                courtItem.className = 'court-item';
+                courtItem.onclick = () => showCourtDetail(court.id);
+
+                const countText = court.pdfs.length > 0 
+                    ? `<span class="pdf-count">${court.pdfs.length} ${court.pdfs.length === 1 ? 'document' : 'documents'}</span>`
+                    : '';
+
+                courtItem.innerHTML = `
+                    <span class="court-name">${court.name}</span>
+                    ${countText}
+                    <span class="arrow">→</span>
+                `;
+
+                container.appendChild(courtItem);
+            });
+        }
+
+        function showCourtDetail(courtId) {
+            const court = judgementsData.courts.find(c => c.id === courtId);
+            if (!court) return;
+
+            document.getElementById('court-list-view').style.display = 'none';
+            document.getElementById('court-detail-view').style.display = 'block';
+
+            document.getElementById('court-title').textContent = court.name;
+            
+            const subtitle = court.pdfs.length === 0 
+                ? 'No documents available'
+                : `${court.pdfs.length} ${court.pdfs.length === 1 ? 'document' : 'documents'} available`;
+            document.getElementById('court-subtitle').textContent = subtitle;
+
+            const pdfsContainer = document.getElementById('pdfs-container');
+            pdfsContainer.innerHTML = '';
+
+            if (court.pdfs.length > 0) {
+                court.pdfs.forEach(pdf => {
+                    const pdfCard = document.createElement('div');
+                    pdfCard.className = 'pdf-card';
+
+                    const date = new Date(pdf.date);
+                    const formattedDate = date.toLocaleDateString('en-GB', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric'
+                    });
+
+                    pdfCard.innerHTML = `
+                        <div class="pdf-header">
+                            <h3 class="pdf-title">${pdf.title}</h3>
+                            <span class="pdf-date">${formattedDate}</span>
+                        </div>
+                        <p class="pdf-description">${pdf.description}</p>
+                        <a href="/pdfs/judgements/${pdf.fileName}" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                            View Document →
+                        </a>
+                    `;
+
+                    pdfsContainer.appendChild(pdfCard);
+                });
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showCourtList() {
+            document.getElementById('court-detail-view').style.display = 'none';
+            document.getElementById('court-list-view').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

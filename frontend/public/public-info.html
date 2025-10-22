@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Information - KBJ & Co</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffffff, #f8f8f8);
+        }
+
+        .public-info-page {
+            min-height: 100vh;
+            padding: 100px 20px 60px;
+        }
+
+        .public-info-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #1d1d1f;
+            text-decoration: none;
+            font-size: 17px;
+            margin-bottom: 40px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .back-link:hover {
+            opacity: 0.6;
+            transform: translateX(-4px);
+        }
+
+        .page-title {
+            font-size: 64px;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+        }
+
+        .page-subtitle {
+            font-size: 24px;
+            color: #86868b;
+            font-weight: 300;
+        }
+
+        .documents-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .document-card {
+            background: #fff;
+            padding: 40px 48px;
+            border-radius: 24px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .document-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+
+        .document-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            gap: 24px;
+        }
+
+        .document-title {
+            font-size: 24px;
+            color: #1d1d1f;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            margin: 0;
+            flex: 1;
+        }
+
+        .document-date {
+            font-size: 15px;
+            color: #86868b;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .document-description {
+            font-size: 17px;
+            color: #6e6e73;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .document-link {
+            display: inline-block;
+            color: #1d1d1f;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            padding-bottom: 2px;
+            border-bottom: 1px solid #1d1d1f;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .document-link:hover {
+            opacity: 0.6;
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body>
+    <div class="public-info-page">
+        <div class="public-info-container">
+            <a href="/index.html" class="back-link">← Back to Home</a>
+            
+            <div class="page-header">
+                <h1 class="page-title">Public Information</h1>
+                <p class="page-subtitle">Documents relevant for public awareness</p>
+            </div>
+
+            <div class="documents-list" id="documents-container">
+                <!-- Documents will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function loadDocuments() {
+            const container = document.getElementById('documents-container');
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/public-info');
+                const documents = await response.json();
+
+                if (!Array.isArray(documents) || documents.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; padding: 40px; color: #86868b;">No documents available yet.</p>';
+                    return;
+                }
+
+                container.innerHTML = '';
+
+                documents.forEach(doc => {
+                    const docCard = document.createElement('div');
+                    docCard.className = 'document-card';
+
+                    const date = new Date(doc.date);
+                    const formattedDate = date.toLocaleDateString('en-GB', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric'
+                    });
+
+                    docCard.innerHTML = `
+                        <div class="document-header">
+                            <h3 class="document-title">${doc.title}</h3>
+                            <span class="document-date">${formattedDate}</span>
+                        </div>
+                        <p class="document-description">${doc.description}</p>
+                        <a href="http://localhost:5000${doc.file_path}" target="_blank" rel="noopener noreferrer" class="document-link">
+                            View Document →
+                        </a>
+                    `;
+
+                    container.appendChild(docCard);
+                });
+            } catch (error) {
+                console.error('Error loading documents:', error);
+                container.innerHTML = '<p style="text-align: center; padding: 40px; color: #86868b;">Error loading documents. Please try again later.</p>';
+            }
+        }
+
+        loadDocuments();
+    </script>
+</body>
+</html>

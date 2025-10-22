@@ -1,0 +1,8 @@
+PLACE YOUR NEWS REPORT IMAGES IN THIS FOLDER
+
+This folder will contain all the JPG/PNG images for news reports.
+
+After placing images here, update the file:
+public/data/news-reports.json
+
+For detailed instructions, see the main documentation.

@@ -1,0 +1,50 @@
+{
+  "courts": [
+    {
+      "id": 1,
+      "name": "Supreme Court",
+      "pdfs": [
+        {
+          "id": 1,
+          "title": "Sample Judgement 1",
+          "fileName": "supreme-court-case-1.pdf",
+          "date": "2024-01-15",
+          "description": "Important case regarding..."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Delhi High Court",
+      "pdfs": [
+        {
+          "id": 2,
+          "title": "Sample Judgement 2",
+          "fileName": "high-court-case-1.pdf",
+          "date": "2024-02-20",
+          "description": "Landmark decision on..."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Central Administrative Tribunal",
+      "pdfs": []
+    },
+    {
+      "id": 4,
+      "name": "Delhi School Tribunal",
+      "pdfs": []
+    },
+    {
+      "id": 5,
+      "name": "Labour Courts",
+      "pdfs": []
+    },
+    {
+      "id": 6,
+      "name": "District Courts",
+      "pdfs": []
+    }
+  ]
+}
