@@ -9,8 +9,11 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.8.0",
+    "@types/react-router-dom": "^5.3.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.9.5"
   },
   "devDependencies": {
     "@babel/core": "^7.23.0",

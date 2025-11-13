@@ -105,6 +105,17 @@ export function Header() {
             <li><a href="/public-info.html">PUBLIC INFORMATION</a></li>
             <li><a href="#clients">OUR CLIENTS</a></li>
             <li><a href="#contact">CONTACT</a></li>
+            <li className="login-nav-item">
+              <button 
+                className="client-login-btn"
+                onClick={() => {
+                  const event = new CustomEvent('openLogin');
+                  window.dispatchEvent(event);
+                }}
+              >
+                Client Portal
+              </button>
+            </li>
           </ul>
           <button 
             className="menu-toggle" 

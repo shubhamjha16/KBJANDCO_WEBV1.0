@@ -34,7 +34,8 @@ export function NewsReports() {
     <section id="news-reports" className="news-reports section">
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">IN THE NEWS</h2>
+          <h2>In the News,</h2>
+          <div className="underline"></div>
           <p className="section-subtitle">Media Coverage of Our Notable Cases</p>
         </div>
 

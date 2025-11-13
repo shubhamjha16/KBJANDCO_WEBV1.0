@@ -33,7 +33,8 @@ export function PublicInfo() {
     <section id="public-info" className="public-info section">
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">PUBLIC INFORMATION</h2>
+          <h2>Public Information,</h2>
+          <div className="underline"></div>
           <p className="section-subtitle">Important Legal Documents & Resources</p>
         </div>
 

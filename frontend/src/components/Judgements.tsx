@@ -48,7 +48,8 @@ export function Judgements() {
     <section id="judgements" className="judgements section">
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">NOTED JUDGEMENTS</h2>
+          <h2>Noted Judgements,</h2>
+          <div className="underline"></div>
           <p className="section-subtitle">Important Legal Precedents by Courts</p>
         </div>
 

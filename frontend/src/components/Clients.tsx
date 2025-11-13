@@ -4,9 +4,9 @@ const clientCategories = [
   { icon: "👮", title: "Government Employees" },
   { icon: "🎖️", title: "Military & Paramilitary Officers" },
   { icon: "👨‍⚕️", title: "Medical Professionals" },
-  { icon: "👨‍🏫", title: "Educators & Professors" },
-  { icon: "👨‍💼", title: "Business Professionals" },
-  { icon: "👨‍🔧", title: "Engineers & Technical Experts" }
+  { icon: "👨‍🏫", title: "Education Professionals" },
+  { icon: "🔧", title: "Engineers & Technical Experts" },
+  { icon: "💼", title: "Business Professionals" }
 ];
 
 export function Clients() {
@@ -14,13 +14,14 @@ export function Clients() {
     <section id="clients" className="clients section">
       <div className="container">
         <div className="section-header">
-          <h2>OUR CLIENTS</h2>
+          <h2>Our Clients,</h2>
           <div className="underline"></div>
+          <p className="section-subtitle">Distinguished professionals across diverse sectors</p>
         </div>
         <div className="clients-content">
           <p className="lead">
-            Our clients include government employees, police officers, military & paramilitary 
-            officers, professionals including engineers, doctors, chartered accountants, professors, 
+            Our clients include government employees, police officers, military & paramilitary
+            officers, professionals including engineers, doctors, chartered accountants, professors,
             teachers, etc.
           </p>
           <div className="client-categories">

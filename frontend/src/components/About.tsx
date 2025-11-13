@@ -5,7 +5,7 @@ export function About() {
     <section id="about" className="about section">
       <div className="container">
         <div className="section-header">
-          <h2>Excellence in Legal Practice</h2>
+          <h2>Excellence in Legal Practice,</h2>
           <div className="underline"></div>
           <p className="section-subtitle">Trusted counsel for discerning clients</p>
         </div>

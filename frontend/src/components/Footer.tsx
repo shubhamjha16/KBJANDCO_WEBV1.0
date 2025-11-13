@@ -37,9 +37,9 @@ export function Footer() {
             <div className="footer-section">
               <h3>Find Us</h3>
               <div className="social-links">
-                <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                <a href="#" aria-label="Twitter">Twitter</a>
-                <a href="#" aria-label="Facebook">Facebook</a>
+                <span className="social-link" aria-label="LinkedIn">LinkedIn</span>
+                <span className="social-link" aria-label="Twitter">Twitter</span>
+                <span className="social-link" aria-label="Facebook">Facebook</span>
               </div>
               <div className="contact-quick">
                 <p><strong>Phone:</strong> +91-8826456565</p>

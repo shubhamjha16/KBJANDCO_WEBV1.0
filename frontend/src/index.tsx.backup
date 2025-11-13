@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Auth0Provider } from '@auth0/auth0-react';
 import './styles/main.css';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
@@ -15,7 +16,7 @@ import { Footer } from './components/Footer';
 import { Login } from './components/Login';
 import { ClientDashboard } from './components/ClientDashboard';
 import { LawyerDashboard } from './components/LawyerDashboard';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { AuthProvider, useAuth } from './contexts/Auth0Context';
 
 function MainApp() {
   const { user, isAuthenticated, login, logout } = useAuth();
@@ -111,10 +112,22 @@ function MainApp() {
 }
 
 function App() {
+  // Auth0 configuration
+  const domain = process.env.REACT_APP_AUTH0_DOMAIN || 'dev-kbj-law-firm.us.auth0.com';
+  const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID || 'placeholder-client-id';
+
   return (
-    <AuthProvider>
-      <MainApp />
-    </AuthProvider>
+    <Auth0Provider
+      domain={domain}
+      clientId={clientId}
+      authorizationParams={{
+        redirect_uri: window.location.origin
+      }}
+    >
+      <AuthProvider>
+        <MainApp />
+      </AuthProvider>
+    </Auth0Provider>
   );
 }
 
