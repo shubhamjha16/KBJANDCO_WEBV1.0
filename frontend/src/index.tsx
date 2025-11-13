@@ -57,34 +57,50 @@ function MainApp() {
     setIsLoginOpen(false);
   };
 
-  // If user is authenticated, show appropriate dashboard
+  // If user is authenticated, show simple dashboard
   if (isAuthenticated && user) {
-    if (user.role === 'lawyer') {
-      return (
-        <LawyerDashboard 
-          user={{
-            name: user.name,
-            email: user.email,
-            lawyerId: user.lawyerId || 'LAW-001',
-            specialization: user.specialization || 'General Practice',
-            profilePicture: user.profilePicture
-          }} 
-          onLogout={logout} 
-        />
-      );
-    } else {
-      return (
-        <ClientDashboard 
-          user={{
-            name: user.name,
-            email: user.email,
-            clientId: user.clientId || 'CLT-001',
-            profilePicture: user.profilePicture
-          }} 
-          onLogout={logout} 
-        />
-      );
-    }
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        padding: '40px 20px', 
+        fontFamily: 'Arial, sans-serif',
+        backgroundColor: '#f5f5f5' 
+      }}>
+        <div style={{ 
+          maxWidth: '800px', 
+          margin: '0 auto', 
+          backgroundColor: 'white',
+          padding: '40px',
+          borderRadius: '8px',
+          boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+        }}>
+          <h1 style={{ color: '#1c4e80', marginBottom: '20px' }}>
+            Welcome to KBJ & CO Portal, {user.name}!
+          </h1>
+          <p style={{ fontSize: '18px', marginBottom: '30px' }}>
+            You are logged in as: <strong>{user.role}</strong>
+          </p>
+          <div style={{ marginBottom: '30px' }}>
+            <h2 style={{ color: '#333', marginBottom: '15px' }}>Your Dashboard</h2>
+            <p>Welcome to your professional legal portal. All features are being loaded.</p>
+          </div>
+          <button 
+            onClick={logout} 
+            style={{ 
+              padding: '12px 24px', 
+              fontSize: '16px',
+              backgroundColor: '#1c4e80',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer'
+            }}
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    );
   }
 
   // Otherwise show main website
