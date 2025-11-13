@@ -127,6 +127,10 @@ function MainApp() {
 }
 
 function App() {
+  React.useEffect(() => {
+    console.log('KBJ App is starting...');
+  }, []);
+
   return (
     <AuthProvider>
       <MainApp />
