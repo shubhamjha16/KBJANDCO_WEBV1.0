@@ -13,6 +13,7 @@ import { Clients } from './components/Clients';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { Login } from './components/Login';
+import { DisclaimerPopup } from './components/DisclaimerPopup';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 
 function LoadingSpinner() {
@@ -119,9 +120,19 @@ function UserDashboard() {
 
 function MainWebsite() {
   const [isLoginOpen, setIsLoginOpen] = React.useState(false);
+  const [showDisclaimer, setShowDisclaimer] = React.useState(false);
+  const [disclaimerAccepted, setDisclaimerAccepted] = React.useState(false);
   const { login } = useAuth();
 
   React.useEffect(() => {
+    // Check if disclaimer has been accepted before
+    const accepted = localStorage.getItem('disclaimerAccepted');
+    if (accepted === 'true') {
+      setDisclaimerAccepted(true);
+    } else {
+      setShowDisclaimer(true);
+    }
+
     // Smooth scrolling for navigation links
     const handleClick = (e: Event) => {
       const target = e.target as HTMLElement;
@@ -151,6 +162,17 @@ function MainWebsite() {
     };
   }, []);
 
+  const handleDisclaimerAgree = () => {
+    localStorage.setItem('disclaimerAccepted', 'true');
+    setDisclaimerAccepted(true);
+    setShowDisclaimer(false);
+  };
+
+  const handleDisclaimerDisagree = () => {
+    // Redirect to a blank page or show a message
+    window.location.href = 'about:blank';
+  };
+
   const handleLogin = async (role: 'client' | 'lawyer') => {
     try {
       await login(role);
@@ -160,6 +182,16 @@ function MainWebsite() {
       // Could show error message to user here
     }
   };
+
+  // Don't render the website content until disclaimer is accepted
+  if (!disclaimerAccepted) {
+    return showDisclaimer ? (
+      <DisclaimerPopup 
+        onAgree={handleDisclaimerAgree}
+        onDisagree={handleDisclaimerDisagree}
+      />
+    ) : null;
+  }
 
   return (
     <>
