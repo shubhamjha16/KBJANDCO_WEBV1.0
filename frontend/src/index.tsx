@@ -125,13 +125,8 @@ function MainWebsite() {
   const { login } = useAuth();
 
   React.useEffect(() => {
-    // Check if disclaimer has been accepted before
-    const accepted = localStorage.getItem('disclaimerAccepted');
-    if (accepted === 'true') {
-      setDisclaimerAccepted(true);
-    } else {
-      setShowDisclaimer(true);
-    }
+    // Always show disclaimer on every page load
+    setShowDisclaimer(true);
 
     // Smooth scrolling for navigation links
     const handleClick = (e: Event) => {
@@ -163,7 +158,7 @@ function MainWebsite() {
   }, []);
 
   const handleDisclaimerAgree = () => {
-    localStorage.setItem('disclaimerAccepted', 'true');
+    // Don't store in localStorage, just allow access for this session
     setDisclaimerAccepted(true);
     setShowDisclaimer(false);
   };
