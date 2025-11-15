@@ -58,13 +58,13 @@ export const DisclaimerPopup: React.FC<DisclaimerPopupProps> = ({ onAgree, onDis
           
           <p style={{ marginBottom: '15px' }}>
             There has been no advertisement, solicitation, personal communication, invitation or inducement 
-            of any sort whatsoever from M Mulla Associates or any of its members to solicit any work through 
+            of any sort whatsoever from KBJ & CO or any of its members to solicit any work through 
             this website. This website is meant only for providing information and does not purport to be 
             exhaustive and updated in relation to the information contained herein. No material/information 
             provided on this website should be construed as legal advice. The receipt or use of this website 
             would not create any lawyer-client relationship. The user wishes to seek information on his/her 
             own accord and volition for his/her own use. Users are advised to seek independent legal counsel 
-            before proceeding to act on any information provided herein. M Mulla Associates will not be liable 
+            before proceeding to act on any information provided herein. KBJ & CO will not be liable 
             for any consequence of any action taken by the user relying on material/information provided on 
             this website.
           </p>
