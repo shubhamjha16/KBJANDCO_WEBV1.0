@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -40,6 +41,17 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
       inject: 'body'
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'public',
+          to: '',
+          globOptions: {
+            ignore: ['**/index.html'] // Don't copy index.html as HtmlWebpackPlugin handles it
+          }
+        }
+      ]
     })
   ],
   devServer: {
